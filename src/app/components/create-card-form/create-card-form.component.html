@@ -4,15 +4,6 @@
       <h3>Enter Card Details</h3>
     </div>
     <form [formGroup]="createCardForm" (submit)="onSubmit()" method="dialog">
-      @if(submitSuccess){
-      <div class="alert alert-success fixed bottom-5 right-5" role="alert">
-        Card saved successfully!!
-      </div>
-      } @if(submitFail){
-      <div class="alert alert-error fixed bottom-5 right-5" role="alert">
-        Failed to save card!!
-      </div>
-      }
       <label
         class="input input-bordered w-full max-w-sm flex items-center gap-3 mt-2"
       >

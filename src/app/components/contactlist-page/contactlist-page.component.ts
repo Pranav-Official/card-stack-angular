@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { ContactService } from '../../services/contact.service';
 import { CreateCardFormComponent } from '../create-card-form/create-card-form.component';
-import { contactType } from '../../types/contactTypes';
+import { contactType, responseStatus } from '../../types/contactTypes';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-contactlist-page',
@@ -28,5 +28,22 @@ export class ContactlistPageComponent {
         console.log(error);
       },
     });
+  }
+  actionSuccess = false;
+  actionFailure = false;
+  onStatusChange(status: responseStatus) {
+    console.log('from child to parent', status);
+    if (status == 'success') {
+      this.actionSuccess = true;
+      setTimeout(() => {
+        this.actionSuccess = false;
+      }, 3000);
+    }
+    if (status == 'error') {
+      this.actionFailure = true;
+      setTimeout(() => {
+        this.actionFailure = false;
+      }, 3000);
+    }
   }
 }

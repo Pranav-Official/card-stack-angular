@@ -8,4 +8,5 @@ type contactListReturnType = {
   message: string;
   status: boolean;
 };
-export { contactType, contactListReturnType };
+type responseStatus = 'success' | 'error';
+export { contactType, contactListReturnType, responseStatus };
