@@ -1,12 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { contactType } from '../../types/contactTypes';
 import { ContactService } from '../../services/contact.service';
-import { HttpClientModule } from '@angular/common/http';
+import { CreateCardFormComponent } from '../create-card-form/create-card-form.component';
 @Component({
   selector: 'app-contactlist-page',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CreateCardFormComponent],
   providers: [ContactService],
   templateUrl: './contactlist-page.component.html',
   styleUrl: './contactlist-page.component.css',
