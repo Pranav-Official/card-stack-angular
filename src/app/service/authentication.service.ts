@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environtment';
 
 type RegistrationResponse = {
   status: boolean;
@@ -27,5 +27,11 @@ export class AuthenticationService {
       `${baseUrl}/userRegistration`,
       user
     );
+  }
+  userLogin(user: {
+    user_email: string;
+    password: string;
+  }): Observable<RegistrationResponse> {
+    return this.http.post<RegistrationResponse>(`${baseUrl}/userLogin`, user);
   }
 }
