@@ -17,15 +17,18 @@ export class ContactlistPageComponent {
   contactService = inject(ContactService);
   router = inject(Router);
   activatedRoute = inject(ActivatedRoute);
-
+  isLoading = false;
   ngOnInit() {
+    this.isLoading = true;
     this.contactService.getContactList().subscribe({
       next: (contactList) => {
         console.log(contactList);
         this.data = contactList.data;
+        this.isLoading = false;
       },
       error: (error) => {
         console.log(error);
+        this.isLoading = false;
       },
     });
   }
