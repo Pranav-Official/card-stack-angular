@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-contactlist-page',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule],
   providers: [ContactService],
   templateUrl: './contactlist-page.component.html',
   styleUrl: './contactlist-page.component.css',
