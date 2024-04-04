@@ -13,7 +13,7 @@ import { CreateCardService } from '../../services/create-card.service.';
 @Component({
   selector: 'app-create-card-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
+  imports: [CommonModule, ReactiveFormsModule],
   providers: [CreateCardService],
   templateUrl: './create-card-form.component.html',
   styleUrl: './create-card-form.component.css',
@@ -30,22 +30,23 @@ export class CreateCardFormComponent {
     private createCardService: CreateCardService
   ) {
     this.createCardForm = this.fb.group({
-      cardName: new FormControl('', [Validators.required]),
-      jobTitle: new FormControl(''),
+      card_name: new FormControl('', [Validators.required]),
+      job_title: new FormControl(''),
       email: new FormControl('', [Validators.required, Validators.email]),
-      contactNumber: new FormControl('', [
+      phone: new FormControl('', [
         Validators.required,
         Validators.minLength(10),
       ]),
-      companyName: new FormControl(''),
-      companyWebsite: new FormControl('', [Validators.pattern(this.pattern)]),
+      company_name: new FormControl(''),
+      company_website: new FormControl(''),
     });
   }
 
   onSubmit() {
     if (this.createCardForm.valid) {
       const formData = this.createCardForm.value;
-      this.createCardService.createCard(formData).subscribe({
+      const cardData = { ...formData, contact_name: formData.card_name };
+      this.createCardService.createCard(cardData).subscribe({
         next: (response: any) => {
           console.log('Card created successfully:', response);
           this.createCardForm.reset();

@@ -1,17 +1,17 @@
 type cardDetailsType = {
-  cardName: string;
+  card_name: string;
   img_front_link?: string;
   img_back_link?: string;
-  jobTitle?: string;
+  job_title?: string;
   email: string;
   phone: string;
-  companyName?: string;
-  companyWebsite?: string;
-  contactName: string;
+  company_name?: string;
+  company_website?: string;
+  contact_name: string;
 };
 type cardResponsType = {
   status: boolean;
   message: string;
-  data: Object;
+  data: object;
 };
 export { cardDetailsType, cardResponsType };

@@ -30,11 +30,11 @@
           type="text"
           class="form-control"
           id="cardName"
-          formControlName="cardName"
+          formControlName="card_name"
           placeholder="Card Name"
         />
       </label>
-      @if(createCardForm.get('cardName')?.hasError('required')){
+      @if(createCardForm.get('card_name')?.hasError('required')){
       <div class="form-text text-error fw-bold">Card Name is required</div>
       }
       <label
@@ -54,7 +54,13 @@
             fill="currentColor"
           />
         </svg>
-        <input type="text" class="grow" placeholder="Job Title" />
+        <input
+          type="text"
+          class="form-control"
+          id="jobTitle"
+          placeholder="Job Title"
+          formControlName="job_title"
+        />
       </label>
       <label
         class="input input-bordered w-full max-w-sm flex items-center gap-3 mt-2"
@@ -108,12 +114,12 @@
           class="form-control"
           id="contactNumber"
           placeholder="Contact Number"
-          formControlName="contactNumber"
+          formControlName="phone"
         />
       </label>
-      @if(createCardForm.get('email')?.hasError('required')){
+      @if(createCardForm.get('phone')?.hasError('required')){
       <div class="form-text text-error fw-bold">Contact number is required</div>
-      } @if(createCardForm.get('contactNumber')?.hasError('minlength')){
+      } @if(createCardForm.get('phone')?.hasError('minlength')){
       <div class="form-text text-error fw-bold">
         Contact number should be ten digits
       </div>
@@ -152,11 +158,17 @@
           />
         </svg>
 
-        <input type="text" class="grow" placeholder="Company Website" />
+        <input
+          type="text"
+          class="form-control"
+          id="contactNumber"
+          formControlName="company_website"
+          placeholder="Company Website"
+        />
       </label>
-      @if(createCardForm.get('companyWebsite')?.hasError('companyWebsite')) {
+      <!-- @if(createCardForm.get('company_website')?.hasError('pattern')) {
       <div class="form-text text-error fw-bold">Invalid Website!</div>
-      }
+      } -->
       <div class="flex flex-col items-center">
         <button
           type="submit"
