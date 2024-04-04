@@ -1,0 +1,84 @@
+<div class="relative flex flex-col justify-center h-screen overflow-hidden">
+  <div
+    class="w-full p-6 m-auto bg-white rounded-md shadow-md ring-2 ring-gray-800/50 lg:max-w-xl"
+  >
+    <h1 class="text-3xl font-semibold text-center text-gray-700">Sign Up</h1>
+    <form class="space-y-4" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label class="label">
+          <span class="text-base label-text">Name</span>
+        </label>
+        <input
+          type="text"
+          placeholder="Name"
+          class="w-full input input-bordered"
+          formControlName="user_fullname"
+          name="user_fullname"
+        />
+      </div>
+      <div>
+        <label class="label">
+          <span class="text-base label-text">Email</span>
+        </label>
+        <input
+          type="text"
+          placeholder="Email Address"
+          class="w-full input input-bordered"
+          formControlName="user_email"
+          name="user_email"
+        />
+        @if (signUpForm.get('user_email')?.invalid &&
+        signUpForm.get('user_email')?.touched) {
+        <p class="text-error">Please enter an valid email</p>
+        }
+      </div>
+      <div>
+        <label class="label">
+          <span class="text-base label-text">Password</span>
+        </label>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          class="w-full input input-bordered"
+          formControlName="password"
+          name="password"
+        />
+        @if (signUpForm.get('password')?.invalid &&
+        signUpForm.get('password')?.touched) {
+        <p class="text-error">
+          Passwords must contain Uppercase, lowercase, number and special
+          charecters and be minimum 8 charecters long
+        </p>
+        }
+      </div>
+      <div>
+        <label class="label">
+          <span class="text-base label-text">Confirm Password</span>
+        </label>
+        <input
+          type="password"
+          placeholder="Confirm Password"
+          class="w-full input input-bordered"
+          formControlName="confirmPassword"
+          name="confirmPassword"
+        />
+        @if (signUpForm.get('confirmPassword')?.touched &&
+        signUpForm.get('confirmPassword') != signUpForm.get('password')) {
+        <p class="text-error">Passwords do not match</p>
+        }
+      </div>
+      <div>
+        <button class="btn btn-block">Sign Up</button>
+      </div>
+      <span
+        >Already have an account ?
+        <a
+          href="#"
+          class="text-blue-600 hover:text-blue-800 hover:underline"
+          routerLink="/login"
+          >Login</a
+        ></span
+      >
+    </form>
+  </div>
+</div>
