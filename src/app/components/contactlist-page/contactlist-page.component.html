@@ -5,7 +5,7 @@
     </li>
     @for(contact of data;track $index){
     <li>
-      <a>
+      <a [routerLink]="['/list-cards', contact.card_id]">
         <div class="avatar placeholder">
           <div class="bg-neutral text-neutral-content rounded-full w-8">
             <span class="text-xs">{{ contact.contact_name.charAt(0) }}</span>
@@ -19,3 +19,17 @@
     }
   </ul>
 </div>
+<button
+  class="btn btn-lg btn-circle fixed bottom-5 right-5 bg-primary hover:opacity-60 hover:bg-primary"
+  onclick="my_modal_2.showModal()"
+>
+  <span class="text-3xl text-white mt-[-5px]">+</span>
+</button>
+<dialog id="my_modal_2" class="modal p-0">
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+  <div class="modal-box">
+    <app-create-card-form />
+  </div>
+</dialog>

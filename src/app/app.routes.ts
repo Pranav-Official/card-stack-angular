@@ -5,4 +5,5 @@ import { CreateCardFormComponent } from './components/create-card-form/create-ca
 export const routes: Routes = [
   { path: '', component: ContactlistPageComponent },
   { path: 'add', component: CreateCardFormComponent },
+  { path: 'list-cards/:id', component: CreateCardFormComponent },
 ];

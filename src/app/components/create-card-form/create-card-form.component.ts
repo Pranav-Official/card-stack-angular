@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -7,7 +7,6 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { CreateCardService } from '../../services/create-card.service.';
 
 @Component({
