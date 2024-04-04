@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { ContactService } from '../../services/contact.service';
 import { CreateCardFormComponent } from '../create-card-form/create-card-form.component';
+import { contactType } from '../../types/contactTypes';
 @Component({
   selector: 'app-contactlist-page',
   standalone: true,
@@ -11,14 +12,7 @@ import { CreateCardFormComponent } from '../create-card-form/create-card-form.co
   styleUrl: './contactlist-page.component.css',
 })
 export class ContactlistPageComponent {
-  // data: contactType[] = [
-  //   { id: 1, name: 'Apputtan' },
-  //   { id: 1, name: 'Savithri' },
-  //   { id: 1, name: 'Jalaja' },
-  //   { id: 1, name: 'Sushama' },
-  //   { id: 1, name: 'Janaki' },
-  // ];
-  data: any;
+  data: contactType[] | null = null;
   contactService = inject(ContactService);
 
   ngOnInit() {

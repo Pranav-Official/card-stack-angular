@@ -3,5 +3,9 @@ type contactType = {
   contact_name: string;
   cardListCount: number;
 };
-
-export { contactType };
+type contactListReturnType = {
+  data: contactType[];
+  message: string;
+  status: boolean;
+};
+export { contactType, contactListReturnType };
