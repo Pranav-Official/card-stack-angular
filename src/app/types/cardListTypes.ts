@@ -6,4 +6,11 @@ type cardListResponse = {
   job_title: string;
   company_name: string;
 };
-export { cardListResponse };
+
+type deleteCardResponse = {
+  status: boolean;
+  message: string;
+  data: {
+  };
+}
+export { cardListResponse,deleteCardResponse };

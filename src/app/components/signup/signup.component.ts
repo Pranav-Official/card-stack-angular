@@ -35,7 +35,7 @@ export class SignupComponent {
         Validators.required,
         Validators.minLength(8),
         Validators.pattern(
-          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
         ),
       ]),
       confirmPassword: new FormControl('', [Validators.required]),
@@ -59,7 +59,7 @@ export class SignupComponent {
         if (data.status) {
           this.signUpForm.reset();
           localStorage.setItem('token', data.data.token);
-          // this.router.navigate(['/']);
+          this.router.navigate(['/']);
         }
       });
   }

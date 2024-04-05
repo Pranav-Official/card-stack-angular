@@ -18,7 +18,8 @@ export class ContactlistPageComponent {
   router = inject(Router);
   activatedRoute = inject(ActivatedRoute);
   isLoading = false;
-  ngOnInit() {
+
+  initialFetch(){
     this.isLoading = true;
     this.contactService.getContactList().subscribe({
       next: (contactList) => {
@@ -32,11 +33,17 @@ export class ContactlistPageComponent {
       },
     });
   }
+
+  ngOnInit() {
+    this.initialFetch();
+  }
+
   actionSuccess = false;
   actionFailure = false;
   onStatusChange(status: responseStatus) {
     console.log('from child to parent', status);
     if (status == 'success') {
+      this.initialFetch();
       this.actionSuccess = true;
       setTimeout(() => {
         this.actionSuccess = false;
