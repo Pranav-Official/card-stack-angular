@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { cardDetailsType, cardResponsType } from '../types/cardDetailsTypes'; // Assuming you have defined these types
+import { cardDetailsType, cardResponsType } from '../types/cardDetailsTypes';
 @Injectable({
   providedIn: 'root',
 })
