@@ -1,0 +1,53 @@
+<div class="relative flex flex-col justify-center h-screen overflow-hidden">
+  <div
+    class="w-full p-6 m-auto bg-white rounded-md shadow-md ring-2 ring-gray-800/50 lg:max-w-xl"
+  >
+    <h1 class="text-3xl font-semibold text-center text-gray-700">Login</h1>
+    <form class="space-y-4" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label class="label">
+          <span class="text-base label-text">Email</span>
+        </label>
+        <input
+          type="text"
+          placeholder="Email Address"
+          class="w-full input input-bordered"
+          formControlName="user_email"
+          name="user_email"
+        />
+        @if (loginForm.get('user_email')?.invalid &&
+        loginForm.get('user_email')?.touched) {
+        <p class="text-error">Please enter an valid email</p>
+        }@else if(inValidCredentials) {
+        <p class="text-error">Invalid Credentials</p>
+        }
+      </div>
+      <div>
+        <label class="label">
+          <span class="text-base label-text">Password</span>
+        </label>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          class="w-full input input-bordered"
+          formControlName="password"
+          name="password"
+        />
+        @if(inValidCredentials) {
+        <p class="text-error">Invalid Credentials</p>
+        }
+      </div>
+      <div>
+        <button class="btn btn-block">Login</button>
+      </div>
+      <span
+        >Are you a new user ?
+        <a
+          class="text-blue-600 hover:text-blue-800 hover:underline"
+          routerLink="/signup"
+          >signup</a
+        ></span
+      >
+    </form>
+  </div>
+</div>

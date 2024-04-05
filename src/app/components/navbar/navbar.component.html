@@ -10,6 +10,7 @@
         class="input input-sm input-bordered w-24 md:w-auto"
       />
     </div>
+    @if(isLoggedIn()){
     <div class="dropdown dropdown-end">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
         <div class="w-10 rounded-full">
@@ -29,9 +30,16 @@
             <span class="badge">New</span>
           </a>
         </li>
-        <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
+
+        <li><a routerLink="logout">Logout</a></li>
       </ul>
     </div>
+    }@else {
+    <div class="py-1">
+      <button class="btn btn-accent h-4" routerLink="/login">
+        <h2 class="p-0 text-lg">Login</h2>
+      </button>
+    </div>
+    }
   </div>
 </div>
