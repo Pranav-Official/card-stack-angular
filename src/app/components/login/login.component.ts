@@ -7,13 +7,13 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { AuthenticationService } from '../../service/authentication.service';
+import { AuthenticationService } from '../../services/authentication.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule, HttpClientModule],
+  imports: [RouterLink, ReactiveFormsModule],
   providers: [AuthenticationService],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
@@ -53,7 +53,7 @@ export class LoginComponent {
           this.inValidCredentials = false;
           this.loginForm.reset();
           localStorage.setItem('token', data.data.token);
-          // this.router.navigate(['/']);
+          this.router.navigate(['/']);
         } else {
           this.inValidCredentials = true;
         }

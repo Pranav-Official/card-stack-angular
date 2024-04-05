@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environtment';
 
 type RegistrationResponse = {
   status: boolean;
@@ -12,7 +11,6 @@ type RegistrationResponse = {
   };
 };
 
-const baseUrl = environment.apiUrl;
 @Injectable({
   providedIn: 'root',
 })
@@ -23,15 +21,15 @@ export class AuthenticationService {
     password: string;
     user_fullname: string;
   }): Observable<RegistrationResponse> {
-    return this.http.post<RegistrationResponse>(
-      `${baseUrl}/userRegistration`,
-      user
-    );
+    return this.http.post<RegistrationResponse>(`userRegistration`, user);
   }
   userLogin(user: {
     user_email: string;
     password: string;
   }): Observable<RegistrationResponse> {
-    return this.http.post<RegistrationResponse>(`${baseUrl}/userLogin`, user);
+    return this.http.post<RegistrationResponse>('userLogin', user);
+  }
+  userLogout() {
+    localStorage.removeItem('token');
   }
 }

@@ -31,13 +31,13 @@
           </a>
         </li>
 
-        <li><a routerLink="logout">Logout</a></li>
+        <li><a (click)="userLogout()">Logout</a></li>
       </ul>
     </div>
     }@else {
     <div class="py-1">
-      <button class="btn btn-accent h-4" routerLink="/login">
-        <h2 class="p-0 text-lg">Login</h2>
+      <button class="btn btn-primary btn-sm h-4" routerLink="/login">
+        <span class="text-white">Login</span>
       </button>
     </div>
     }

@@ -8,12 +8,13 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { AuthenticationService } from '../../service/authentication.service';
+import { AuthenticationService } from '../../services/authentication.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule, HttpClientModule],
+  imports: [RouterLink, ReactiveFormsModule, CommonModule],
   providers: [AuthenticationService],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css',
@@ -34,7 +35,7 @@ export class SignupComponent {
         Validators.required,
         Validators.minLength(8),
         Validators.pattern(
-          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
         ),
       ]),
       confirmPassword: new FormControl('', [Validators.required]),
