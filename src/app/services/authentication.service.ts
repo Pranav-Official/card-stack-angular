@@ -27,6 +27,9 @@ export class AuthenticationService {
     user_email: string;
     password: string;
   }): Observable<RegistrationResponse> {
-    return this.http.post<RegistrationResponse>(`userLogin`, user);
+    return this.http.post<RegistrationResponse>('userLogin', user);
+  }
+  userLogout() {
+    localStorage.removeItem('token');
   }
 }

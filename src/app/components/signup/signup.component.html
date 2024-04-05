@@ -1,8 +1,8 @@
-<div class="relative flex flex-col justify-center h-screen overflow-hidden">
-  <div
-    class="w-full p-6 m-auto bg-white rounded-md shadow-md ring-2 ring-gray-800/50 lg:max-w-xl"
-  >
-    <h1 class="text-3xl font-semibold text-center text-gray-700">Sign Up</h1>
+<div class="relative flex flex-col justify-center items-center pt-12">
+  <div class="bg-base-200 w-full max-w-lg flex-col items-center rounded-lg p-8">
+    <div class="prose flex flex-col items-center pb-5">
+      <h1>SignUp</h1>
+    </div>
     <form class="space-y-4" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
       <div>
         <label class="label">
@@ -15,6 +15,10 @@
           formControlName="user_fullname"
           name="user_fullname"
         />
+        @if (signUpForm.get('user_fullname')?.hasError('required') &&
+        signUpForm.get('user_fullname')?.touched) {
+        <p class="text-error">Please enter name</p>
+        }
       </div>
       <div>
         <label class="label">
@@ -46,8 +50,8 @@
         @if (signUpForm.get('password')?.invalid &&
         signUpForm.get('password')?.touched) {
         <p class="text-error">
-          Passwords must contain Uppercase, lowercase, number and special
-          charecters and be minimum 8 charecters long
+          Passwords must contain uppercase, lowercase, number and special
+          charecters and be minimum 8 characters long
         </p>
         }
       </div>
@@ -63,22 +67,30 @@
           name="confirmPassword"
         />
         @if (signUpForm.get('confirmPassword')?.touched &&
-        signUpForm.get('confirmPassword') != signUpForm.get('password')) {
+        signUpForm.get('confirmPassword') !== signUpForm.get('password')) {
         <p class="text-error">Passwords do not match</p>
         }
       </div>
       <div>
-        <button class="btn btn-block">Sign Up</button>
+        <button
+          type="submit"
+          class="btn btn-primary btn-block"
+          [disabled]="signUpForm.invalid"
+        >
+          Sign Up
+        </button>
       </div>
-      <span
-        >Already have an account ?
-        <a
-          href="#"
-          class="text-blue-600 hover:text-blue-800 hover:underline"
-          routerLink="/login"
-          >Login</a
-        ></span
-      >
+      <div class="text-center mt-3">
+        <span
+          >Already have an account ?
+          <a
+            href="#"
+            class="text-blue-600 hover:text-blue-800 hover:underline"
+            routerLink="/login"
+            >Login</a
+          ></span
+        >
+      </div>
     </form>
   </div>
 </div>
