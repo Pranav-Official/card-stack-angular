@@ -11,7 +11,9 @@
 
     <div class="card-body">
       <div class="prose">
-        <h3 class="card-title font-bold">{{ card.card_name }}</h3>
+        <h3 class="card-title font-bold">
+          {{ card.card_name ? card.card_name : "Card Name" }}
+        </h3>
       </div>
       <div class="flex flex-row gap-3">
         <svg
@@ -46,7 +48,7 @@
               d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z"
             />
           </svg>
-          <p class="text-md">{{ card.email }}</p>
+          <p class="text-md">{{ card.email ? card.email : "Email" }}</p>
         </div>
         <div class="flex flex-row gap-3">
           <svg
@@ -64,7 +66,9 @@
               stroke-linejoin="round"
             />
           </svg>
-          <p class="text-md">{{ card.phone }}</p>
+          <p class="text-md">
+            {{ card.phone ? card.phone : "Contact Number" }}
+          </p>
         </div>
         <div class="flex flex-row gap-3">
           <svg
@@ -79,7 +83,9 @@
               fill="currentColor"
             />
           </svg>
-          <p class="text-md">{{ card.company_name }}</p>
+          <p class="text-md">
+            {{ card.company_name ? card.company_name : "Company Name" }}
+          </p>
         </div>
         <div class="flex flex-row gap-3">
           <svg
@@ -95,7 +101,11 @@
               stroke="currentColor"
             />
           </svg>
-          <p class="text-md">{{ card.company_website }}</p>
+          <p class="text-md">
+            {{
+              card.company_website ? card.company_website : "Company Website"
+            }}
+          </p>
         </div>
         <div class="flex flex-row gap-4 justify-between w-full">
           <button class="btn btn-md w-5/12" onclick="my_modal_2.showModal()" (click)="editMode=true">Edit</button>
