@@ -172,7 +172,7 @@
         <button
           type="submit"
           class="btn btn-active btn-primary w-full max-w-xl"
-          [disabled]="createCardForm.invalid"
+          [disabled]="createCardForm.pristine || createCardForm.invalid"
         >
           Save Card
         </button>

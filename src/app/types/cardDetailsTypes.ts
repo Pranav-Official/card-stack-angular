@@ -1,4 +1,5 @@
 type cardDetailsType = {
+  card_id: string;
   card_name: string;
   img_front_link?: string;
   img_back_link?: string;
