@@ -5,7 +5,7 @@
     </li>
     @for(contact of data;track $index){
     <li>
-      <a>
+      <a [routerLink]="['/list-cards', contact.card_id]">
         <div class="avatar placeholder">
           <div class="bg-neutral text-neutral-content rounded-full w-8">
             <span class="text-xs">{{ contact.contact_name.charAt(0) }}</span>
@@ -19,3 +19,65 @@
     }
   </ul>
 </div>
+<button
+  class="btn btn-lg btn-circle fixed bottom-5 right-5 bg-primary hover:opacity-60 hover:bg-primary"
+  onclick="my_modal_2.showModal()"
+>
+  <span class="text-3xl text-white mt-[-5px]">+</span>
+</button>
+<dialog id="my_modal_2" class="modal p-0">
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+  <div class="modal-box">
+    <app-create-card-form (status)="onStatusChange($event)" />
+  </div>
+</dialog>
+@if(actionSuccess){
+<div
+  class="alert alert-success w-full m-3 max-w-xs fixed bottom-2 right-2"
+  role="alert"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="stroke-current shrink-0 h-6 w-6"
+    fill="none"
+    viewBox="0 0 24 24"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+    />
+  </svg>
+  Card saved successfully!!
+</div>
+} @if(actionFailure){
+<div
+  class="alert alert-error w-full m-3 max-w-xs fixed bottom-2 right-2"
+  role="alert"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="stroke-current shrink-0 h-6 w-6"
+    fill="none"
+    viewBox="0 0 24 24"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+    />
+  </svg>
+  Failed to save card!!
+</div>
+} @if(isLoading){
+<dialog id="my_modal_1" class="modal modal-open">
+  <button class="btn btn-lg">
+    <span class="loading loading-infinity loading-lg"></span>
+  </button>
+</dialog>
+
+}

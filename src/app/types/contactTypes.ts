@@ -3,5 +3,10 @@ type contactType = {
   contact_name: string;
   cardListCount: number;
 };
-
-export { contactType };
+type contactListReturnType = {
+  data: contactType[];
+  message: string;
+  status: boolean;
+};
+type responseStatus = 'success' | 'error';
+export { contactType, contactListReturnType, responseStatus };
