@@ -1,4 +1,3 @@
-import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import {
   FormBuilder,
@@ -35,7 +34,7 @@ export class SignupComponent {
         Validators.required,
         Validators.minLength(8),
         Validators.pattern(
-          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+          /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/gm
         ),
       ]),
       confirmPassword: new FormControl('', [Validators.required]),
@@ -59,7 +58,7 @@ export class SignupComponent {
         if (data.status) {
           this.signUpForm.reset();
           localStorage.setItem('token', data.data.token);
-          // this.router.navigate(['/']);
+          this.router.navigate(['/']);
         }
       });
   }
