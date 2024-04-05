@@ -1,18 +1,9 @@
 <div class="flex flex-col items-center">
-  <div
-    class="bg-base-200 w-full max-w-lg flex-col items-center rounded-lg p-16"
-  >
+  <div class="bg-base-200 w-full max-w-lg flex-col items-center rounded-lg p-8">
     <div class="prose flex flex-col items-center pb-5">
       <h3>Enter Card Details</h3>
     </div>
-    <form [formGroup]="createCardForm" (submit)="onSubmit()">
-      @if(submitSuccess){
-      <div class="alert alert-success" role="alert">
-        Card saved successfully!!
-      </div>
-      } @if(submitFail){
-      <div class="alert alert-error" role="alert">Failed to save card!!</div>
-      }
+    <form [formGroup]="createCardForm" (submit)="onSubmit()" method="dialog">
       <label
         class="input input-bordered w-full max-w-sm flex items-center gap-3 mt-2"
       >
@@ -35,7 +26,9 @@
         />
       </label>
       @if(createCardForm.get('card_name')?.hasError('required')){
-      <div class="form-text text-error fw-bold">Card Name is required</div>
+      <div class="form-text text-error mt-1 ml-1 text-sm">
+        Card Name is required
+      </div>
       }
       <label
         class="input input-bordered w-full max-w-sm flex items-center gap-3 mt-2"
@@ -87,9 +80,13 @@
         />
       </label>
       @if(createCardForm.get('email')?.hasError('required')){
-      <div class="form-text text-error fw-bold">Email is required</div>
+      <div class="form-text text-error mt-1 ml-1 text-sm">
+        Email is required
+      </div>
       }@if(createCardForm.get('email')?.hasError('email')) {
-      <div class="form-text text-error fw-bold">Invalid Email id!</div>
+      <div class="form-text text-error mt-1 ml-1 text-sm">
+        Invalid Email id!
+      </div>
       }
       <label
         class="input input-bordered w-full max-w-sm flex items-center gap-3 mt-2"
@@ -118,9 +115,11 @@
         />
       </label>
       @if(createCardForm.get('phone')?.hasError('required')){
-      <div class="form-text text-error fw-bold">Contact number is required</div>
+      <div class="form-text text-error mt-1 ml-1 text-sm">
+        Contact number is required
+      </div>
       } @if(createCardForm.get('phone')?.hasError('minlength')){
-      <div class="form-text text-error fw-bold">
+      <div class="form-text text-error mt-1 ml-1 text-sm">
         Contact number should be ten digits
       </div>
       }

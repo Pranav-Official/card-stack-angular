@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -7,8 +7,8 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { CreateCardService } from '../../services/create-card.service.';
+import { responseStatus } from '../../types/contactTypes';
 
 @Component({
   selector: 'app-create-card-form',
@@ -19,6 +19,8 @@ import { CreateCardService } from '../../services/create-card.service.';
   styleUrl: './create-card-form.component.css',
 })
 export class CreateCardFormComponent {
+  @Output() status = new EventEmitter<responseStatus>();
+
   pattern: string | RegExp =
     '(http(s)?://.)?(www.)?[-a-zA-Z0-9@:%._+~#=]{2,256}.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)';
   createCardForm!: FormGroup;
@@ -50,17 +52,11 @@ export class CreateCardFormComponent {
         next: (response: any) => {
           console.log('Card created successfully:', response);
           this.createCardForm.reset();
-          this.submitSuccess = true;
-          setTimeout(() => {
-            this.submitSuccess = false;
-          }, 2000);
+          this.status.emit('success');
         },
         error: (error: any) => {
+          this.status.emit('error');
           console.error('Error creating card:', error);
-          this.submitFail = true;
-          setTimeout(() => {
-            this.submitFail = false;
-          }, 2000);
         },
       });
     } else {

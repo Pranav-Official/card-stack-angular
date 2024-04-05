@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable, SkipSelf } from '@angular/core';
-import { contactType } from '../types/contactTypes';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { contactListReturnType, contactType } from '../types/contactTypes';
 
 @Injectable({
   providedIn: 'root',
@@ -8,10 +8,6 @@ import { contactType } from '../types/contactTypes';
 export class ContactService {
   constructor(private http: HttpClient) {}
   getContactList() {
-    return this.http.get<{
-      data: contactType[];
-      message: string;
-      status: boolean;
-    }>('api/v1/getContactList', {});
+    return this.http.get<contactListReturnType>('api/v1/getContactList', {});
   }
 }
