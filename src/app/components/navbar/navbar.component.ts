@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterModule,RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterModule,RouterLink],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
@@ -16,4 +16,7 @@ export class NavbarComponent {
       return false;
     }
   }
+
+  router = inject(Router);
+
 }
