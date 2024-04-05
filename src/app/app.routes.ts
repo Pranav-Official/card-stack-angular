@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ContactlistPageComponent } from './components/contactlist-page/contactlist-page.component';
 import { CardListPageComponent } from './components/card-list-page/card-list-page.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 
 export const routes: Routes = [
   {
@@ -13,4 +14,5 @@ export const routes: Routes = [
   { path: 'list-cards/:id', component: CardListPageComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
+  { path: '**', component: NotFoundPageComponent },
 ];

@@ -1,4 +1,3 @@
-import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import {
   FormBuilder,
@@ -35,7 +34,7 @@ export class SignupComponent {
         Validators.required,
         Validators.minLength(8),
         Validators.pattern(
-          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
+          /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/gm
         ),
       ]),
       confirmPassword: new FormControl('', [Validators.required]),
